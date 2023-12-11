@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+  web:
+    build: ./docker-environment
+    container_name: adventofcode_2023
+    environment:
+      - ALLOW_OVERRIDE=true
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    ports:
+      - "8081:80"
+    volumes:
+      - ./code:/var/www/html
+    networks:
+      - advent2023
+
+networks:
+  advent2023:
+    external: true
